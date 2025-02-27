@@ -44,5 +44,5 @@ Ensure you have the following installed:
 
 ### **🔹 Clone the Repository**  
 ```bash
-git clone https://github.com/your-username/Misinformation_Detector.git
+git clone https://github.com/San13web/Misinformation_Detector.git
 cd Misinformation_Detector
