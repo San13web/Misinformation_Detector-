@@ -25,15 +25,23 @@ def extract_text_from_url(url):
         return None
 
 def analyze_text(text):
-    """ Analyzes the text and returns a credibility score. """
+    """ Analyzes the text and returns a credibility score and a clear category. """
     if not text:
         return 0, "No text found"
 
     labels = ["true information", "misleading", "false information"]
     result = classifier(text, labels)
 
-    # Assign scores based on classification results
-    credibility_score = result["scores"][0] * 100  # Convert to percentage
-    misinformation_text = result["labels"][0] if result["labels"][0] != "true information" else "No misinformation detected."
+    # Convert confidence score into percentage
+    credibility_score = result["scores"][0] * 100  
+
+    # Define score thresholds for better classification
+    if credibility_score >= 70:
+        misinformation_text = "✅ True Information"
+    elif 40 <= credibility_score < 70:
+        misinformation_text = "⚠️ Uncertain / Needs Fact-Checking"
+    else:
+        misinformation_text = "❌ Misinformation Detected"
 
     return credibility_score, misinformation_text
+  
