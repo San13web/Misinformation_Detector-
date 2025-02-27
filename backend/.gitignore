@@ -1,0 +1,6 @@
+__pycache__/
+selenium_env/
+.vscode/
+.idea/
+*.log
+node_modules/
